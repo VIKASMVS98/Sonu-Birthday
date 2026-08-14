@@ -931,6 +931,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // Load saved user wishes/comments on page load
   savedWishes.forEach(wish => renderWishItem(wish, true));
 
+  // --- URL PARAMETER AUTO-UNPACKER (100% GUARANTEED FAILSAFE FOR WHATSAPP LINKS) ---
+  const urlParams = new URLSearchParams(window.location.search);
+  const sharedSender = urlParams.get('sender');
+  const sharedWish = urlParams.get('wish');
+  const sharedVibe = urlParams.get('vibe') || '🇮🇳 15 August Special Hero';
+
+  if (sharedSender && sharedWish) {
+    const urlWish = { sender: sharedSender, vibe: sharedVibe, msg: sharedWish, date: new Date().toLocaleDateString() };
+    if (!savedWishes.some(w => w.msg === sharedWish && w.sender === sharedSender)) {
+      savedWishes.push(urlWish);
+      localStorage.setItem('sonu_user_wishes', JSON.stringify(savedWishes));
+      renderWishItem(urlWish, true);
+    }
+  }
+
   wishForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const sender = document.getElementById('senderName').value;
@@ -948,7 +963,14 @@ document.addEventListener('DOMContentLoaded', () => {
     wishForm.reset();
     playToneEffect('confetti');
     launchConfetti(window.innerWidth * 0.7, window.innerHeight * 0.8);
-    alert('💬 Your birthday wish comment has been permanently saved & synced across all devices! 🌐🎉');
+
+    // Auto-generate WhatsApp Direct Share Link
+    const directShareUrl = `${window.location.origin}${window.location.pathname}?sender=${encodeURIComponent(sender)}&wish=${encodeURIComponent(msg)}`;
+    
+    if (confirm('💬 Wish posted! Do you want to copy the WhatsApp Direct Share link so all friends can see your wish instantly?')) {
+      navigator.clipboard.writeText(`🎂 Sonu Kumar 15 August Birthday Bash! 🇮🇳\n\n"${msg}" ~ ${sender}\n\nSee wish here: ${directShareUrl}`);
+      alert('📋 WhatsApp Direct Share link copied to clipboard! Share it in WhatsApp group now! 📲🎉');
+    }
   });
 
   // --- 15. CUSTOMIZATION MODAL ---
