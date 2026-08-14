@@ -1193,6 +1193,9 @@ document.addEventListener('DOMContentLoaded', () => {
       reader.readAsText(file);
     });
   }
+  // --- 21. UNIVERSAL REALTIME CLOUD SYNC FOR VERCEL & GITHUB PAGES ---
+  const CLOUD_SYNC_URL = 'https://kvdb.io/4y9hN9K9gZ1zX7w6y5v4/sonu_birthday_media_v1';
+
   async function pushToCloudSync(type, data) {
     try {
       if (syncChannel) {
@@ -1201,15 +1204,15 @@ document.addEventListener('DOMContentLoaded', () => {
       
       const currentMedia = JSON.parse(localStorage.getItem('sonu_user_media') || '[]');
       const currentWishes = JSON.parse(localStorage.getItem('sonu_user_wishes') || '[]');
-      
+
       const payload = {
-        media: currentMedia.slice(-15),
+        media: currentMedia.slice(-20),
         wishes: currentWishes.slice(-30),
-        lastUpdated: new Date().toISOString()
+        timestamp: Date.now()
       };
 
-      fetch('https://api.myjson.online/v1/records/sonu_birthday_bash_2026', {
-        method: 'PUT',
+      fetch(CLOUD_SYNC_URL, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       }).catch(() => null);
@@ -1221,17 +1224,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function pullFromCloudSync() {
     try {
-      const res = await fetch('https://api.myjson.online/v1/records/sonu_birthday_bash_2026', { cache: 'no-store' }).catch(() => null);
+      const res = await fetch(CLOUD_SYNC_URL + '?t=' + Date.now(), { cache: 'no-store' }).catch(() => null);
       if (res && res.ok) {
         const cloudData = await res.json();
-        if (cloudData && cloudData.data) {
-          const remoteMedia = cloudData.data.media || [];
-          const remoteWishes = cloudData.data.wishes || [];
+        if (cloudData) {
+          const remoteMedia = cloudData.media || [];
+          const remoteWishes = cloudData.wishes || [];
 
           let localMedia = JSON.parse(localStorage.getItem('sonu_user_media') || '[]');
           let mediaAdded = false;
           remoteMedia.forEach(item => {
-            if (!localMedia.some(m => m.src === item.src)) {
+            if (item && item.src && !localMedia.some(m => m.src === item.src)) {
               localMedia.push(item);
               renderMediaItem(item, true);
               mediaAdded = true;
@@ -1242,7 +1245,7 @@ document.addEventListener('DOMContentLoaded', () => {
           let localWishes = JSON.parse(localStorage.getItem('sonu_user_wishes') || '[]');
           let wishesAdded = false;
           remoteWishes.forEach(wish => {
-            if (!localWishes.some(w => w.msg === wish.msg && w.sender === wish.sender)) {
+            if (wish && wish.msg && !localWishes.some(w => w.msg === wish.msg && w.sender === wish.sender)) {
               localWishes.push(wish);
               renderWishItem(wish, true);
               wishesAdded = true;
@@ -1256,8 +1259,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Poll cloud database every 6 seconds for live multi-device updates on Vercel
-  setInterval(pullFromCloudSync, 6000);
+  // Poll cloud database every 4 seconds for live multi-device updates
+  setInterval(pullFromCloudSync, 4000);
   pullFromCloudSync();
 
 });
