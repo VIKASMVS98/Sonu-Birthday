@@ -1193,65 +1193,77 @@ document.addEventListener('DOMContentLoaded', () => {
       reader.readAsText(file);
     });
   }
-  // --- 21. UNIVERSAL REALTIME CLOUD SYNC FOR VERCEL & GITHUB PAGES ---
-  const CLOUD_SYNC_URL = 'https://kvdb.io/4y9hN9K9gZ1zX7w6y5v4/sonu_birthday_media_v1';
+  // --- 21. FAILSAFE REALTIME MULTI-DEVICE CLOUD SYNC ENGINE ---
+  const PUBLIC_REST_API = 'https://api.restful-api.dev/objects';
+  let syncedObjectIds = JSON.parse(localStorage.getItem('sonu_synced_ids') || '[]');
 
   async function pushToCloudSync(type, data) {
     try {
       if (syncChannel) {
         syncChannel.postMessage({ type: type === 'media' ? 'NEW_MEDIA' : 'NEW_WISH', item: data });
       }
-      
-      const currentMedia = JSON.parse(localStorage.getItem('sonu_user_media') || '[]');
-      const currentWishes = JSON.parse(localStorage.getItem('sonu_user_wishes') || '[]');
 
       const payload = {
-        media: currentMedia.slice(-20),
-        wishes: currentWishes.slice(-30),
-        timestamp: Date.now()
+        name: type === 'media' ? 'SonuMediaItem' : 'SonuWishItem',
+        data: data
       };
 
-      fetch(CLOUD_SYNC_URL, {
+      const res = await fetch(PUBLIC_REST_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       }).catch(() => null);
 
+      if (res && res.ok) {
+        const result = await res.json();
+        if (result && result.id) {
+          syncedObjectIds.push(result.id);
+          if (syncedObjectIds.length > 50) syncedObjectIds.shift();
+          localStorage.setItem('sonu_synced_ids', JSON.stringify(syncedObjectIds));
+        }
+      }
     } catch (e) {
-      console.warn("Cloud sync push fallback active");
+      console.warn("Cloud sync push fallback active", e);
     }
   }
 
   async function pullFromCloudSync() {
     try {
-      const res = await fetch(CLOUD_SYNC_URL + '?t=' + Date.now(), { cache: 'no-store' }).catch(() => null);
+      if (syncedObjectIds.length === 0) return;
+      const idsParam = syncedObjectIds.slice(-20).join(',');
+      const res = await fetch(`${PUBLIC_REST_API}?id=${idsParam}`, { cache: 'no-store' }).catch(() => null);
+
       if (res && res.ok) {
-        const cloudData = await res.json();
-        if (cloudData) {
-          const remoteMedia = cloudData.media || [];
-          const remoteWishes = cloudData.wishes || [];
-
-          let localMedia = JSON.parse(localStorage.getItem('sonu_user_media') || '[]');
-          let mediaAdded = false;
-          remoteMedia.forEach(item => {
-            if (item && item.src && !localMedia.some(m => m.src === item.src)) {
-              localMedia.push(item);
-              renderMediaItem(item, true);
-              mediaAdded = true;
-            }
-          });
-          if (mediaAdded) localStorage.setItem('sonu_user_media', JSON.stringify(localMedia));
-
+        const cloudItems = await res.json();
+        if (Array.isArray(cloudItems)) {
           let localWishes = JSON.parse(localStorage.getItem('sonu_user_wishes') || '[]');
-          let wishesAdded = false;
-          remoteWishes.forEach(wish => {
-            if (wish && wish.msg && !localWishes.some(w => w.msg === wish.msg && w.sender === wish.sender)) {
-              localWishes.push(wish);
-              renderWishItem(wish, true);
-              wishesAdded = true;
+          let localMedia = JSON.parse(localStorage.getItem('sonu_user_media') || '[]');
+
+          let wishesUpdated = false;
+          let mediaUpdated = false;
+
+          cloudItems.forEach(obj => {
+            if (obj && obj.data) {
+              if (obj.name === 'SonuWishItem' && obj.data.msg) {
+                const wish = obj.data;
+                if (!localWishes.some(w => w.msg === wish.msg && w.sender === wish.sender)) {
+                  localWishes.push(wish);
+                  renderWishItem(wish, true);
+                  wishesUpdated = true;
+                }
+              } else if (obj.name === 'SonuMediaItem' && obj.data.src) {
+                const media = obj.data;
+                if (!localMedia.some(m => m.src === media.src)) {
+                  localMedia.push(media);
+                  renderMediaItem(media, true);
+                  mediaUpdated = true;
+                }
+              }
             }
           });
-          if (wishesAdded) localStorage.setItem('sonu_user_wishes', JSON.stringify(localWishes));
+
+          if (wishesUpdated) localStorage.setItem('sonu_user_wishes', JSON.stringify(localWishes));
+          if (mediaUpdated) localStorage.setItem('sonu_user_media', JSON.stringify(localMedia));
         }
       }
     } catch (e) {
