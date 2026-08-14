@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Sonu Kumar! 🎉 | 15 August Ultimate Special 🇮🇳</title>
+  <meta name="description" content="A unique 15 August Birthday & Independence Day Celebration Website for Sonu Kumar - BCA Graduate & Amazing Friend!">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Outfit:wght@400;600;700;800;900&family=Pacifico&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="royal">
+
+  <!-- Fullscreen Canvas for Fireworks & Confetti -->
+  <canvas id="fireworksCanvas"></canvas>
+
+  <!-- Floating Reactions Container -->
+  <div id="floatingReactionsContainer"></div>
+
+  <!-- Floating Quick Navigation Dock for Superior UX -->
+  <nav class="side-quick-dock" aria-label="Quick Navigation">
+    <a href="#hero" class="dock-btn" title="Hero Top"><i class="fa-solid fa-house"></i></a>
+    <a href="#wheelSection" class="dock-btn" title="Lucky Wheel"><i class="fa-solid fa-dharmachakra"></i></a>
+    <a href="#timelineSection" class="dock-btn" title="BCA Journey"><i class="fa-solid fa-graduation-cap"></i></a>
+    <a href="#djSection" class="dock-btn" title="Party DJ Pads"><i class="fa-solid fa-compact-disc"></i></a>
+    <a href="#cakeSection" class="dock-btn" title="Cake Stage"><i class="fa-solid fa-cake-candles"></i></a>
+    <a href="#quizSection" class="dock-btn" title="Trivia Quiz"><i class="fa-solid fa-brain"></i></a>
+    <a href="#scrapbookSection" class="dock-btn" title="Photo Scrapbook"><i class="fa-solid fa-images"></i></a>
+    <a href="#balloonSection" class="dock-btn" title="Balloon Game"><i class="fa-solid fa-balloon"></i></a>
+    <a href="#wishesSection" class="dock-btn" title="Wishes Wall"><i class="fa-solid fa-comments"></i></a>
+  </nav>
+
+  <!-- Floating Sound & Control Navigation Bar -->
+  <header class="vip-navbar">
+    <div class="nav-logo">
+      <i class="fa-solid fa-crown text-gold"></i>
+      <span>Sonu's VIP Bash 🇮🇳</span>
+    </div>
+    <div class="nav-controls">
+      <!-- Theme Selector -->
+      <select id="themeSelector" class="nav-btn theme-select-btn" title="Choose Theme">
+        <option value="patriot">🇮🇳 15 August Independence Theme</option>
+        <option value="royal">👑 Royal Purple Theme</option>
+        <option value="cyber">⚡ Cyberpunk BCA Theme</option>
+        <option value="sunset">🌟 Sunset Gold Theme</option>
+      </select>
+
+      <button id="musicToggleBtn" class="nav-btn" title="Toggle Music">
+        <i class="fa-solid fa-music"></i> <span class="btn-text" id="musicBtnText">Music: OFF</span>
+      </button>
+
+      <button id="fireworksShowBtn" class="nav-btn btn-gold" title="Start 15 August Fireworks Show">
+        <i class="fa-solid fa-volcano"></i> Fireworks Show!
+      </button>
+
+      <button id="customizeBtn" class="nav-btn btn-purple" title="Customize Page">
+        <i class="fa-solid fa-sliders"></i> Customize
+      </button>
+    </div>
+  </header>
+
+  <main class="main-container">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-backdrop"></div>
+      
+      <div class="hero-content">
+        <!-- FUTURISTIC CYBER HUD STATUS BAR -->
+        <div class="cyber-hud-bar">
+          <div class="hud-item"><span class="hud-label">SYSTEM STATUS:</span> <span class="hud-val green-glow">100% OPTIMAL</span></div>
+          <div class="hud-item"><span class="hud-label">BCA TECH LEVEL:</span> <span class="hud-val cyan-glow">OVER 9000 ⚡</span></div>
+          <div class="hud-item"><span class="hud-label">PARTY ENERGY:</span> <span class="hud-val gold-glow">MAXIMUM 🚀</span></div>
+        </div>
+
+        <!-- 15 AUGUST BIRTHDAY SPECIAL BADGE -->
+        <div class="august15-badge">
+          <span>🇮🇳 15 AUGUST SPECIAL 🇮🇳</span>
+          <p>Independence Day & Sonu's Birthday Mega Celebration!</p>
+        </div>
+
+        <div class="vip-badge">
+          <i class="fa-solid fa-star"></i> OFFICIAL BIRTHDAY BASH <i class="fa-solid fa-star"></i>
+        </div>
+
+        <h1 class="hero-title">
+          Happy Birthday <br>
+          <span class="gold-gradient-text" id="displayFriendName">Sonu Kumar</span>! 🎂🇮🇳
+        </h1>
+
+        <p class="hero-subtitle">
+          Celebrating our favorite <span class="badge-bca" id="displayDegree">BCA Graduate</span>, Born Leader & Tech Whiz! 💻🚀
+        </p>
+
+        <!-- SPECIAL BIRTHDAY WISH BANNER & GENERATOR -->
+        <div class="official-wish-banner" id="officialWishBanner">
+          <i class="fa-solid fa-quote-left quote-icon"></i>
+          <p id="heroWishText">"Wishing Sonu Kumar the happiest 15 August Birthday! May your BCA graduation lead to top career success, highest LPA package & lifelong joy with friends!"</p>
+          <i class="fa-solid fa-quote-right quote-icon"></i>
+          <div class="wish-banner-actions">
+            <button id="generateWishBtn" class="small-btn gold-pulse"><i class="fa-solid fa-wand-magic-sparkles"></i> New Birthday Wish 🔮</button>
+            <button id="copyWishBtn" class="small-btn"><i class="fa-solid fa-copy"></i> Copy Wish for WhatsApp 📲</button>
+          </div>
+        </div>
+
+        <!-- Profile Photo Frame with Glowing Crown & Equalizer -->
+        <div class="avatar-container">
+          <div class="crown-overlay">👑</div>
+          <div class="avatar-ring">
+            <img id="mainAvatarImg" src="images/sonu_portrait.jpg" alt="Sonu Kumar" class="hero-avatar-img">
+          </div>
+          <div class="equalizer-bar-group" id="equalizer">
+            <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+          </div>
+        </div>
+
+        <!-- LIVE REACTION BUTTONS -->
+        <div class="reaction-bar">
+          <button class="reaction-btn" data-emoji="❤️">❤️ Love</button>
+          <button class="reaction-btn" data-emoji="🔥">🔥 Fire</button>
+          <button class="reaction-btn" data-emoji="👑">👑 King</button>
+          <button class="reaction-btn" data-emoji="🚀">🚀 Rocket</button>
+          <button class="reaction-btn" data-emoji="🇮🇳">🇮🇳 Salute</button>
+        </div>
+
+        <!-- 15 AUGUST COUNTDOWN TIMER -->
+        <div class="hero-timer-box">
+          <div class="timer-title">⏳ Countdown to 15 August Birthday Celebration Mode! 🎉🇮🇳</div>
+          <div class="countdown-grid" id="countdownGrid">
+            <div class="timer-card"><span id="daysNum">00</span><label>Days</label></div>
+            <div class="timer-card"><span id="hoursNum">00</span><label>Hours</label></div>
+            <div class="timer-card"><span id="minsNum">00</span><label>Minutes</label></div>
+            <div class="timer-card"><span id="secsNum">00</span><label>Seconds</label></div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <button id="jaiHoSongBtn" class="cta-btn jaiho-cta" title="Play Jai Ho Patriotic Anthem">
+            <i class="fa-solid fa-flag"></i> 🎵 Play "Jai Ho" Song 🇮🇳
+          </button>
+          <button id="openSecretLetterBtn" class="cta-btn letter-cta" title="Open Unsealed Secret Birthday Letter">
+            <i class="fa-solid fa-envelope-open-text"></i> 💌 Unseal VIP Birthday Letter
+          </button>
+          <button id="cyberVoiceBtn" class="cta-btn cyber-voice-cta" title="Listen to AI Voice Speech Announcement">
+            <i class="fa-solid fa-robot"></i> 🤖 AI Cyber Speech Announcer
+          </button>
+          <button id="openCertificateBtn" class="cta-btn primary-cta">
+            <i class="fa-solid fa-file-certificate"></i> Official Birthday Certificate
+          </button>
+          <a href="#wheelSection" class="cta-btn dj-cta">
+            <i class="fa-solid fa-dharmachakra"></i> Lucky Spinner Wheel 🎡
+          </a>
+          <a href="#timelineSection" class="cta-btn secondary-cta">
+            <i class="fa-solid fa-timeline"></i> Sonu's BCA Journey
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: 🎡 LUCKY BIRTHDAY SPINNER WHEEL -->
+    <section class="section-container wheel-section" id="wheelSection">
+      <div class="section-header">
+        <h2 class="section-title">🎡 Sonu's Lucky Birthday Spinner Wheel 🎰</h2>
+        <p class="section-desc">Spin the wheel to unlock Sonu Kumar's Birthday Fortune & Mega Wishes!</p>
+      </div>
+
+      <div class="wheel-stage">
+        <div class="wheel-pointer">▼</div>
+        <div class="wheel-container" id="wheelContainer">
+          <div class="wheel-segment seg-1"><span>👑 King of BCA</span></div>
+          <div class="wheel-segment seg-2"><span>🚀 Highest LPA</span></div>
+          <div class="wheel-segment seg-3"><span>🇮🇳 15 Aug Legend</span></div>
+          <div class="wheel-segment seg-4"><span>🍕 Party Treat</span></div>
+          <div class="wheel-segment seg-5"><span>💻 FAANG Dev</span></div>
+          <div class="wheel-segment seg-6"><span>💖 Yaaron Ka Yaar</span></div>
+        </div>
+
+        <button id="spinWheelBtn" class="action-btn gold-pulse spin-btn-main">
+          <i class="fa-solid fa-dharmachakra"></i> SPIN WHEEL NOW! 🎡
+        </button>
+
+        <div class="wheel-result-box" id="wheelResultBox" style="display:none;">
+          <h3 id="wheelResultTitle">🎉 You Landed On: 🚀 Highest LPA Package!</h3>
+          <p id="wheelResultDesc">Sonu Kumar is destined for top tech achievements & endless success!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: 🎙️ VOICE WISHES & AUDIO BOOTH -->
+    <section class="section-container audio-section" id="audioSection">
+      <div class="section-header">
+        <h2 class="section-title">🎙️ Audio Voice Blessings Booth 🎧</h2>
+        <p class="section-desc">Listen to special synthesized birthday voice wishes & music notes for Sonu!</p>
+      </div>
+
+      <div class="audio-booth-grid">
+        <div class="audio-card">
+          <div class="audio-icon"><i class="fa-solid fa-volume-high"></i></div>
+          <h3>🔊 "Happy 15 August Birthday Sonu!" Voice Wish</h3>
+          <p>Text-to-speech synthesized birthday shoutout!</p>
+          <button id="playSpeechBtn" class="action-btn gold-pulse">
+            <i class="fa-solid fa-play"></i> Play Voice Wish
+          </button>
+        </div>
+
+        <div class="audio-card">
+          <div class="audio-icon"><i class="fa-solid fa-guitar"></i></div>
+          <h3>🎸 Birthday Anthem Melody</h3>
+          <p>Synthesized Happy Birthday instrumental jam!</p>
+          <button id="playAnthemBtn" class="action-btn purple-btn">
+            <i class="fa-solid fa-music"></i> Play Birthday Jam
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: 📜 SONU'S BCA JOURNEY & MEMORIES TIMELINE -->
+    <section class="section-container timeline-section" id="timelineSection">
+      <div class="section-header">
+        <h2 class="section-title">📜 Sonu Kumar's BCA Journey & Milestones 🚀</h2>
+        <p class="section-desc">From first day of college to BCA Graduate & 15 August Birthday Legend!</p>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-item">
+          <div class="timeline-dot">🎓</div>
+          <div class="timeline-content">
+            <span class="timeline-date">2023 — The Beginning</span>
+            <h3>BCA Journey Starts</h3>
+            <p>Sonu steps into computer applications, mastering programming fundamentals & making lifelong college friends!</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">🤝</div>
+          <div class="timeline-content">
+            <span class="timeline-date">2024 — Dosti & Brotherhood</span>
+            <h3>Unbreakable Bond with Buddies</h3>
+            <p>Late night study sessions, tea breaks, trips with friends, and becoming the "Bhai of all Bhais"!</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">💻</div>
+          <div class="timeline-content">
+            <span class="timeline-date">2025 — Coding Techie</span>
+            <h3>Project & Bug Debugging Master</h3>
+            <p>Solving complex coding problems, developing projects, and earning a reputation as the squad's tech whiz!</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot">🇮🇳</div>
+          <div class="timeline-content">
+            <span class="timeline-date">2026 — 15 August Birthday Legend</span>
+            <h3>BCA Graduation & Mega Celebration</h3>
+            <p>Graduating with flying colors, celebrating on Independence Day (15th August), and stepping into a bright tech career!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: 🎁 MYSTERY GIFT UNBOXING SURPRISE -->
+    <section class="section-container gift-section" id="giftSection">
+      <div class="section-header">
+        <h2 class="section-title">🎁 Open Sonu's 15 August Birthday Gift 🏆</h2>
+        <p class="section-desc">Click on the glowing gift box to untie the ribbon and reveal Sonu's Birthday Trophy!</p>
+      </div>
+
+      <div class="gift-box-stage">
+        <div class="gift-box" id="giftBox">
+          <div class="gift-lid" id="giftLid">
+            <div class="gift-bow">🎁</div>
+          </div>
+          <div class="gift-body">
+            <div class="gift-ribbon-v"></div>
+            <div class="gift-ribbon-h"></div>
+          </div>
+        </div>
+
+        <div class="trophy-card" id="trophyCard">
+          <div class="trophy-icon">🏆🇮🇳</div>
+          <h3>SONU KUMAR</h3>
+          <p class="trophy-title">"15 AUGUST BORN HERO & BCA TOP TECHIE AWARD"</p>
+          <div class="trophy-badge"> Certified Best Friend Forever 💖</div>
+          <button id="claimTrophyBtn" class="action-btn gold-pulse">
+            <i class="fa-solid fa-award"></i> Accept Award With Pride!
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: 🎧 PARTY DJ SOUNDBOARD & BEAT PADS -->
+    <section class="section-container dj-section" id="djSection">
+      <div class="section-header">
+        <h2 class="section-title">🎧 Party DJ Soundboard & Beat Pads 🎛️</h2>
+        <p class="section-desc">Tap the DJ pads to mix live sound effects and drop beats for Sonu's birthday party!</p>
+      </div>
+
+      <div class="dj-grid">
+        <button class="dj-pad" data-sound="horn">
+          <i class="fa-solid fa-bullhorn"></i>
+          <span>Dhol / Horn</span>
+        </button>
+        <button class="dj-pad" data-sound="applause">
+          <i class="fa-solid fa-hands-clapping"></i>
+          <span>Huge Applause</span>
+        </button>
+        <button class="dj-pad" data-sound="bass">
+          <i class="fa-solid fa-compact-disc"></i>
+          <span>Bass Drop</span>
+        </button>
+        <button class="dj-pad" data-sound="guitar">
+          <i class="fa-solid fa-guitar"></i>
+          <span>Rock Guitar</span>
+        </button>
+        <button class="dj-pad" data-sound="whistle">
+          <i class="fa-solid fa-wind"></i>
+          <span>Party Whistle</span>
+        </button>
+        <button class="dj-pad" data-sound="chant">
+          <i class="fa-solid fa-microphone-lines"></i>
+          <span>"Sonu Bhai!" Chant</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- SECTION: INTERACTIVE CAKE & CANDLE STAGE -->
+    <section class="section-container cake-section" id="cakeSection">
+      <div class="section-header">
+        <h2 class="section-title">🎂 15 August Virtual Cake Stage 🕯️</h2>
+        <p class="section-desc">Click on the candles or blow into your microphone to blow them out, then slice the cake!</p>
+      </div>
+
+      <div class="cake-stage">
+        <div class="cake-status-badge" id="cakeStatusBadge">
+          <i class="fa-solid fa-fire"></i> Candles are glowing! Blow them out!
+        </div>
+
+        <div class="cake-wrapper" id="cakeWrapper">
+          <div class="candles-container" id="candlesContainer">
+            <div class="candle" data-id="1"><div class="flame"></div></div>
+            <div class="candle" data-id="2"><div class="flame"></div></div>
+            <div class="candle" data-id="3"><div class="flame"></div></div>
+          </div>
+
+          <div class="cake-tier tier-top">
+            <div class="frosting"></div>
+            <div class="cake-decor">✨ SONU 15 AUG ✨</div>
+          </div>
+          <div class="cake-tier tier-middle">
+            <div class="frosting"></div>
+            <div class="sprinkles"></div>
+          </div>
+          <div class="cake-tier tier-bottom">
+            <div class="frosting"></div>
+            <div class="cake-pattern">⭐ BCA CLASS OF 2026 ⭐</div>
+          </div>
+          <div class="cake-plate"></div>
+        </div>
+
+        <div class="cake-controls">
+          <button id="blowCandlesBtn" class="action-btn gold-pulse">
+            <i class="fa-solid fa-wind"></i> Blow Candles (Click)
+          </button>
+          <button id="micBlowBtn" class="action-btn purple-btn">
+            <i class="fa-solid fa-microphone"></i> Enable Mic Blow
+          </button>
+          <button id="cutCakeBtn" class="action-btn secondary-btn" disabled>
+            <i class="fa-solid fa-utensils"></i> Slice Cake 🍰
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: 🧠 SONU KUMAR DOSTI TRIVIA QUIZ -->
+    <section class="section-container quiz-section" id="quizSection">
+      <div class="section-header">
+        <h2 class="section-title">🧠 How Well Do You Know Sonu? (Quiz) 🎯</h2>
+        <p class="section-desc">Test your friendship knowledge about Sonu Kumar!</p>
+      </div>
+
+      <div class="quiz-card" id="quizCard">
+        <div class="quiz-progress">Question <span id="quizNum">1</span> / 3</div>
+        <h3 class="quiz-question" id="quizQuestion">What is Sonu Kumar's ultimate BCA superpower?</h3>
+        
+        <div class="quiz-options" id="quizOptions"></div>
+
+        <div class="quiz-result" id="quizResult" style="display:none;">
+          <i class="fa-solid fa-circle-check text-gold"></i>
+          <h4 id="quizScoreText">Score: 3/3!</h4>
+          <p>You are officially Sonu's Certified Best Friend! 🥳🎉</p>
+          <button id="restartQuizBtn" class="small-btn">Play Again</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: BCA DEVELOPER TERMINAL -->
+    <section class="section-container tech-section" id="techSection">
+      <div class="section-header">
+        <h2 class="section-title">💻 BCA Developer Birthday Code Terminal 🚀</h2>
+        <p class="section-desc">Executing special birthday script for Sonu Kumar...</p>
+      </div>
+
+      <div class="terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="terminal-title">sonu_15august_bash.java — BCA Edition</div>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+          <p><span class="t-keyword">public class</span> <span class="t-class">Sonu15AugustBirthday</span> {</p>
+          <p class="t-indent"><span class="t-keyword">public static void</span> <span class="t-method">main</span>(String[] args) {</p>
+          <p class="t-indent2"><span class="t-type">Developer</span> sonu = <span class="t-keyword">new</span> <span class="t-type">Developer</span>(<span class="t-string">"Sonu Kumar"</span>, <span class="t-string">"BCA Graduate"</span>);</p>
+          <p class="t-indent2">System.out.println(<span class="t-string">"🎉 15 August Happy Birthday Sonu Bhai! 🇮🇳"</span>);</p>
+          <p class="t-indent2">sonu.setHappiness(<span class="t-keyword">Double</span>.POSITIVE_INFINITY);</p>
+          <p class="t-indent2">sonu.setSuccess(<span class="t-string">"Top Software Engineer & Legend"</span>);</p>
+          <p class="t-indent2">System.out.println(sonu.getWishes());</p>
+          <p class="t-indent">}</p>
+          <p>}</p>
+          <div class="terminal-output">
+            <div class="output-line green-text">⚡ Compiling birthday_wish_15august.exe... Done (0.01s)!</div>
+            <div class="output-line yellow-text">✨ OUTPUT: 15 August Wish granted! Sonu Kumar deserves unlimited success, joy & endless celebration! 🚀🥳🇮🇳</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PHOTO MEMORY SCRAPBOOK GALLERY -->
+    <section class="section-container gallery-section" id="gallerySection">
+      <div class="section-header">
+        <h2 class="section-title">📸 Sonu's VIP Photo Scrapbook 🖼️</h2>
+        <p class="section-desc">Golden memories with Sonu Kumar & friends! Click any photo to expand, or upload new photos below.</p>
+      </div>
+
+      <div class="upload-bar">
+        <div class="upload-btn-group">
+          <label for="imageFileInput" class="upload-label">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Upload Photos & Videos 📸🎥
+          </label>
+          <input type="file" id="imageFileInput" accept="image/*,video/*" multiple style="display:none;">
+
+          <button id="exportMemoriesBtn" class="small-btn gold-pulse" title="Export Celebration Backup File">
+            <i class="fa-solid fa-download"></i> Export Shared Backup 📥
+          </button>
+          <label for="importFileInput" class="small-btn secondary-btn" style="cursor:pointer;" title="Import Shared Memories File">
+            <i class="fa-solid fa-file-import"></i> Import Memories 📤
+          </label>
+          <input type="file" id="importFileInput" accept=".json" style="display:none;">
+        </div>
+        <span class="upload-hint">Upload media & comments — saved permanently & shared with everyone! 🌐💾✨</span>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="polaroid-card">
+          <div class="pin">📌</div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/sonu_portrait.jpg" alt="Sonu Kumar Portrait" class="gallery-img" loading="lazy" decoding="async">
+          </div>
+          <div class="polaroid-caption">
+            <h3>Sonu Kumar 🌟</h3>
+            <p>15 August Birthday Hero & BCA Tech Star!</p>
+          </div>
+        </div>
+
+        <div class="polaroid-card">
+          <div class="pin">📌</div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/sonu_kurta.jpg" alt="Sonu in Kurta" class="gallery-img" loading="lazy" decoding="async">
+          </div>
+          <div class="polaroid-caption">
+            <h3>Desi Dapper Look ✨</h3>
+            <p>Traditional Vibes & Pure Elegance!</p>
+          </div>
+        </div>
+
+        <div class="polaroid-card">
+          <div class="pin">📌</div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/sonu_friends_1.jpg" alt="Sonu with Friends" class="gallery-img" loading="lazy" decoding="async">
+          </div>
+          <div class="polaroid-caption">
+            <h3>College & Chill Gang 🚴‍♂️</h3>
+            <p>Unforgettable BCA college days & laughs!</p>
+          </div>
+        </div>
+
+        <div class="polaroid-card">
+          <div class="pin">📌</div>
+          <div class="polaroid-img-wrapper">
+            <img src="images/sonu_friends_2.jpg" alt="Sonu with Best Buddies" class="gallery-img" loading="lazy" decoding="async">
+          </div>
+          <div class="polaroid-caption">
+            <h3>Yaaron Ka Yaar 🤝</h3>
+            <p>Bhai-Bhai forever! Unbreakable bond.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: BALLOON POPPER MINI-GAME -->
+    <section class="section-container game-section" id="gameSection">
+      <div class="section-header">
+        <h2 class="section-title">🎈 Pop Balloons for Birthday Blessings! 🎁</h2>
+        <p class="section-desc">Click/tap on the floating balloons to pop them and reveal hidden birthday wishes for Sonu!</p>
+      </div>
+
+      <div class="game-stage" id="gameStage">
+        <div class="game-score-board">
+          <span><i class="fa-solid fa-bullseye"></i> Balloons Popped: <strong id="popCount">0</strong></span>
+          <button id="spawnBalloonsBtn" class="small-btn"><i class="fa-solid fa-plus"></i> Spawn Balloons</button>
+        </div>
+
+        <div class="balloon-field" id="balloonField"></div>
+
+        <div class="blessing-popup" id="blessingPopup">
+          <div class="blessing-content">
+            <span class="blessing-emoji" id="blessingEmoji">🎁</span>
+            <p id="blessingText">You unlocked a secret wish for Sonu!</p>
+            <button class="close-popup-btn" id="closePopupBtn">Awesome!</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: WISHES WALL -->
+    <section class="section-container wishes-section" id="wishesSection">
+      <div class="section-header">
+        <h2 class="section-title">💌 15 August Birthday Message Wall 💖</h2>
+        <p class="section-desc">Leave a special 15 August birthday wish for Sonu Kumar!</p>
+      </div>
+
+      <div class="wishes-layout">
+        <div class="wish-form-card">
+          <h3><i class="fa-solid fa-pen-to-square"></i> Send Sonu Your Wish</h3>
+          <form id="wishForm">
+            <div class="input-group">
+              <label for="senderName">Your Name:</label>
+              <input type="text" id="senderName" placeholder="e.g. Rahul, Vikas, Priyanshu..." required>
+            </div>
+            <div class="input-group">
+              <label for="wishCategory">Wish Vibe:</label>
+              <select id="wishCategory">
+                <option value="🇮🇳 15 August Special Hero">🇮🇳 15 August Special Hero</option>
+                <option value="👑 VIP Legend">👑 VIP Legend</option>
+                <option value="💻 BCA Coding Genius">💻 BCA Coding Genius</option>
+                <option value="🔥 Bhai For Life">🔥 Bhai For Life</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="wishMessage">Your Birthday Message:</label>
+              <textarea id="wishMessage" rows="4" placeholder="Write a special 15 August birthday wish for Sonu..." required></textarea>
+            </div>
+            <button type="submit" class="submit-wish-btn">
+              <i class="fa-solid fa-paper-plane"></i> Post Wish On Wall
+            </button>
+          </form>
+        </div>
+
+        <div class="wishes-wall-cards" id="wishesWall">
+          <div class="wish-item-card">
+            <div class="wish-card-header">
+              <span class="wish-author"><i class="fa-solid fa-flag"></i> Independence Squad</span>
+              <span class="wish-tag">🇮🇳 15 August Special Hero</span>
+            </div>
+            <p class="wish-body">"Happy Birthday Sonu Bhai! 15th August ko paida hone wale alag hi legend hote hain! BCA graduate ho chuke ho, ab Desh aur Tech world me naam roshan karo!"</p>
+            <div class="wish-card-footer">❤️ 100+ Likes</div>
+          </div>
+
+          <div class="wish-item-card">
+            <div class="wish-card-header">
+              <span class="wish-author"><i class="fa-solid fa-user-astronaut"></i> Best Friends</span>
+              <span class="wish-tag">🔥 Bhai For Life</span>
+            </div>
+            <p class="wish-body">"Happy Birthday Sonu Bhai! Hamari dosti hamesha zindabad rahegi! Enjoy your 15 August birthday bash!"</p>
+            <div class="wish-card-footer">🚀 Future Developer</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="vip-footer">
+      <p>Made with ❤️ & Magic for <strong class="text-gold">Sonu Kumar</strong> | 15 August Birthday Special! 🎂🎉🇮🇳</p>
+    </footer>
+
+  </main>
+
+  <!-- OFFICIAL BIRTHDAY CERTIFICATE MODAL -->
+  <div class="modal-overlay" id="certificateModal">
+    <div class="certificate-card" id="certificatePrintable">
+      <button class="close-modal" id="closeCertModalBtn">&times;</button>
+      <div class="cert-border">
+        <div class="cert-header">
+          <div class="cert-flag">🇮🇳</div>
+          <h2>OFFICIAL BIRTHDAY CERTIFICATE</h2>
+          <p>OF HONOR & LEGENDARY FRIENDSHIP</p>
+        </div>
+        <div class="cert-body">
+          <p class="cert-present">This Certificate is Proudly Presented To</p>
+          <h1 class="cert-name">SONU KUMAR</h1>
+          <p class="cert-desc">For Being an Exceptional **BCA Graduate**, Tech Mastermind, Unbreakable Friend, and 15 August Birthday Hero!</p>
+          <div class="cert-details">
+            <div><strong>Date of Birth:</strong> 15th August</div>
+            <div><strong>Degree:</strong> BCA Class of 2026</div>
+            <div><strong>Status:</strong> Certified Legend 👑</div>
+          </div>
+        </div>
+        <div class="cert-footer">
+          <div class="cert-seal">🎖️ SEAL OF HONOR</div>
+          <button id="printCertBtn" class="action-btn gold-pulse">
+            <i class="fa-solid fa-print"></i> Print / Save Certificate
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🎵 OFFICIAL JAI HO YOUTUBE MUSIC VIDEO PLAYER MODAL -->
+  <div class="modal-overlay" id="jaiHoVideoModal">
+    <div class="modal-card video-modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-flag text-gold"></i> "JAI HO" Official Song Player 🇮🇳🎵</h3>
+        <button class="close-modal" id="closeJaiHoModalBtn">&times;</button>
+      </div>
+      <div class="video-modal-body">
+        <div class="video-container">
+          <iframe id="jaiHoIframe" src="https://www.youtube.com/embed/xwwAVRyNmgQ?enablejsapi=1" title="Jai Ho Song - A.R. Rahman" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <p class="video-caption">🇮🇳 Official "Jai Ho" Anthem by A.R. Rahman for Sonu Kumar's 15 August Birthday Bash! 🎉</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 💌 SECRET UNSEALED VIP BIRTHDAY LETTER MODAL -->
+  <div class="modal-overlay" id="secretLetterModal">
+    <div class="modal-card letter-modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-envelope-open-text text-gold"></i> Sonu Kumar's Secret Birthday Letter 💌</h3>
+        <button class="close-modal" id="closeLetterModalBtn">&times;</button>
+      </div>
+      <div class="letter-modal-body">
+        <div class="wax-seal">👑</div>
+        <h4 class="letter-title">Dear Sonu Bhai (15 August Legend) 🇮🇳🎂</h4>
+        <div class="letter-content">
+          <p>On this auspicious 15th of August — Independence Day — we celebrate not just the nation's freedom, but the birth of an extraordinary friend, leader, and tech genius!</p>
+          <p>From cracking BCA assignments to sharing unforgettable college memories, your loyalty, intellect, and brotherhood have touched all of us deeply.</p>
+          <p>May your future be blessed with top software engineering milestones, highest LPA packages, lifelong happiness, health, and true friendship forever!</p>
+        </div>
+        <div class="letter-signature">
+          <span>With Endless Respect & Pride ❤️</span>
+          <p>~ Certified Best Friends Forever 🤝</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOMIZATION MODAL -->
+  <div class="modal-overlay" id="customModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-sliders"></i> Customize Birthday Page</h3>
+        <button class="close-modal" id="closeModalBtn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="input-group">
+          <label for="editName">Friend's Name:</label>
+          <input type="text" id="editName" value="Sonu Kumar">
+        </div>
+        <div class="input-group">
+          <label for="editDegree">Title / Qualification:</label>
+          <input type="text" id="editDegree" value="BCA Graduate & Tech Whiz">
+        </div>
+        <div class="input-group">
+          <label for="editWish">Main Subtitle Wish:</label>
+          <input type="text" id="editWish" value="Celebrating our favorite BCA Graduate, Tech Whiz & Bhai of all Bhais!">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button id="saveCustomBtn" class="action-btn btn-gold">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX MODAL FOR IMAGES WITH ROTATE BUTTON -->
+  <div class="lightbox-overlay" id="lightboxModal">
+    <span class="lightbox-close" id="lightboxClose">&times;</span>
+    <img src="" id="lightboxImg" alt="Expanded Photo">
+    <div class="lightbox-caption-box">
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+      <button id="rotateImgBtn" class="small-btn gold-pulse" style="margin-top:12px;"><i class="fa-solid fa-rotate-right"></i> Rotate 90° 🔄</button>
+    </div>
+  </div>
+
+  <!-- JavaScript Script File -->
+  <script src="script.js"></script>
+</body>
+</html>
