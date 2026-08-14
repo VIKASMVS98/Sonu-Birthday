@@ -671,6 +671,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let savedMedia = JSON.parse(localStorage.getItem('sonu_user_media') || '[]');
 
   function renderMediaItem(item, prepend = true) {
+    if (!item || !item.src || item.src === 'null' || item.src === 'undefined') return;
     const newCard = document.createElement('div');
     newCard.className = 'polaroid-card';
     const isVideo = item.type === 'video' || (item.src && item.src.startsWith('data:video'));
@@ -680,7 +681,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="polaroid-img-wrapper">
         ${isVideo ? 
           `<video src="${item.src}" controls class="gallery-img" style="object-fit:cover; width:100%; height:100%;"></video>` : 
-          `<img src="${item.src}" alt="${item.caption || 'Uploaded Photo'}" class="gallery-img" loading="lazy" decoding="async">`
+          `<img src="${item.src}" alt="${item.caption || 'Uploaded Photo'}" class="gallery-img" loading="lazy" decoding="async" onerror="this.parentElement.parentElement.remove();">`
         }
       </div>
       <div class="polaroid-caption">
